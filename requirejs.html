@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RequireJs</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="js/require.js" data-main="js/config.js"></script>
+    <style>
+        body{
+            background-color: #333;
+        }
+        p {
+            display: block;
+            border: 1px solid #000;
+            padding: 48px;
+            left: 50%;
+            /*width: 200px;
+            margin-left: -100px;*/
+            position: absolute;
+            height: 48px;
+            line-height: 48px;
+            text-align: center;
+            color:#fff;
+            background-color: #f0f;
+            /*transform: translateX(-50%);*/
+            top: 50%;
+            transform: translate(-50%,-50%);
+        }
+    </style>
+</head>
+<body>
+<p id="pps">
+    居中布局
+</p>
+<input value="test" id="input1">
+
+<h2>Great Web resources</h2>
+<ul id="resources">
+    <li><a href="http://opera.com/wsc">Opera Web Standards Curriculum</a></li>
+    <li><a href="http://sitepoint.com">Sitepoint</a></li>
+    <li><a href="http://alistapart.com">A List Apart</a></li>
+    <li><a href="http://yuiblog.com">YUI Blog</a></li>
+    <li><a href="http://caibaojian.com">WEB frontend blog</a></li>
+    <li><a href="http://www.devtoutiao.com">Develop news</a></li>
+</ul>
+
+<script>
+    var message = "Hello world!";
+    if (message){
+        alert("Value is true");
+    }
+    // Classic event handling example
+    //原始写法
+    /*
+    (function(){
+        var resources = document.getElementById('resources');
+        var links = resources.getElementsByTagName('a');
+        var all = links.length;
+        for(var i=0;i<all;i++){
+            // Attach a listener to each link
+            links[i].addEventListener('click',handler,false);
+        };
+        function handler(e){
+            var x = e.target; // Get the link that was clicked
+            alert(x);
+            e.preventDefault();
+        };
+    })();
+    */
+
+    (function(){
+        var resources = document.getElementById('resources');
+        resources.addEventListener('click',handler,false);
+        function handler(e){
+            var x = e.target; // get the link tha
+            if(x.nodeName.toLowerCase() === 'a'){
+                alert('Event delegation:' + x);
+                e.preventDefault();
+            }
+        };
+    })();
+</script>
+</body>
+</html>
