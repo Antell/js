@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>前端代码新写法——Zen Coding</title>
+    <!--<script src="js/require.js" data-main="js/config.js"></script>-->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<div>
+    <div id="logo">test</div>
+</div>
+<pre>
+    <code class="html">
+        <div>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </code>
+</pre>
+<div class="inner-content">
+    <p>是不是还在为html繁琐的标签写法而苦恼？</p>
+    <p>是不是还在枯燥的写尖括号？</p>
+    <p>Zen Coding的到来将让前端编码不在繁琐。不再拘泥html的尖括号和一堆一堆的标签。</p>
+    <p>先看看ZenCoding的效果图。</p>
+    <p><img class="alignnone size-full wp-image-715" src="https://php-xoui.rhcloud.com/wp-content/uploads/2016/06/744482-20160615145349370-711982097.gif" width="404" height="333" alt=""></p>
+    <p>几个单词+几个符号就能把成堆的html框架写好。</p>
+    <p>下面来看ZenCoding的用法。</p>
+    <p>先介绍ZenCoding的<strong>快捷键</strong>：</p>
+    <ol>
+        <li><strong>Ctrl + E：展开代码</strong></li>
+        <li><strong>Ctrl + D：向外快速选中代码块</strong></li>
+        <li><strong>Shift + Ctrl + D：向内快速选中代码块</strong></li>
+        <li><strong>Shift + Ctrl + A：输入一个缩写，自动展开并包围所选代码</strong></li>
+        <li><strong>Ctrl + Alt+→ ：光标智能跳转到下一个编辑点</strong></li>
+        <li><strong>Ctrl + Alt+←：光标智能跳转到上一个编辑点</strong></li>
+        <li><strong>Ctrl + L：选择一行</strong></li>
+    </ol>
+    <p>自己多试试，就能感知ZenCoding对程序员的体贴。</p>
+    <p>再来看看ZenCoding的<strong>语法</strong>：</p>
+    <p><strong>1、后代：&gt;</strong></p>
+    <p>例：<strong>div&gt;ul&gt;li*5</strong></p>
+    <p>展开结果：</p>
+    <p>2、<strong>同级：</strong><strong>+</strong></p>
+    <p>例：<strong>div*2+p*3</strong></p>
+    <p>展开结果：</p>
+    <div class="cnblogs_code"><img id="code_img_closed_ea6d84a4-85ce-4479-8acc-7d16e09a4ee9" class="code_img_closed" src="http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif" alt=""> <span class="cnblogs_code_collapse">View Code</span></div>
+    <p>3、<strong>上级：^</strong></p>
+    <p>例：<strong>div&gt;ul&gt;li*2&gt;a^li*2&gt;span</strong></p>
+    <p>展开结果：</p>
+    <div class="cnblogs_code"><img id="code_img_closed_2cae534b-a4cc-4ce8-b8da-4ec1054a4454" class="code_img_closed" src="http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif" alt=""> <span class="cnblogs_code_collapse">View Code</span></div>
+    <p>4、<strong>分组：</strong><strong>()</strong></p>
+    <p>例：<strong>(head&gt;p#title*2&gt;a)+(div#body&gt;ul#list&gt;li.item*3)+(foot&gt;ul#code&gt;li*2)</strong></p>
+    <p>展开结果：</p>
+    <div class="cnblogs_code"><img id="code_img_closed_ae2bd745-8fa8-48c6-b198-78d0795d698f" class="code_img_closed" src="http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif" alt=""> <span class="cnblogs_code_collapse">View Code</span></div>
+    <p>5、<strong>ID：#</strong> ；<strong> class：.</strong> ； <strong>倍增：</strong><strong>*</strong> ； <strong>自定义属性：</strong><strong>[] </strong>；<strong>文本：</strong><strong>{}</strong> ；</p>
+    <p>例：<strong>form#loding&gt;ul&gt;li#btn&gt;input[type=”button” value=”按钮”]^li&gt;label{标签}[for=”name”]+input[type=”checkbox” id=”name”]{单选}^li&gt;select&gt;option{下拉框}*3</strong>(综合例子)</p>
+    <p>展开结果：</p>
+    <div class="cnblogs_code"><img id="code_img_closed_2c85be8a-88af-4eb6-92aa-9e5a5c14fcfd" class="code_img_closed" src="http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif" alt=""> <span class="cnblogs_code_collapse">View Code</span></div>
+    <p>6、<strong>自增：$</strong></p>
+    <p>例一：<strong>ul&gt;li.item$*3</strong></p>
+    <p>展开结果：</p>
+    <div class="cnblogs_code"><img id="code_img_closed_e60f2a5c-a390-48e8-8138-1ffa6b73b7b7" class="code_img_closed" src="http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif" alt=""> <span class="cnblogs_code_collapse">View Code</span></div>
+    <p>例二：<strong>ul&gt;li{学号：$@6}*3</strong></p>
+    <p>展开结果：</p>
+    <div class="cnblogs_code"><img id="code_img_closed_89564129-12fc-46c9-af17-04d9967ba13c" class="code_img_closed" src="http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif" alt=""> <span class="cnblogs_code_collapse">View Code</span></div>
+    <p>例三：<strong>ul&gt;li.item$$$*3</strong></p>
+    <p>展开结果：</p>
+    <div class="cnblogs_code"><img id="code_img_closed_69d3ec4c-18f3-4e7f-9477-5b75177846f8" class="code_img_closed" src="http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif" alt=""> <span class="cnblogs_code_collapse">View Code</span></div>
+    <p>例四：<strong>ul&gt;li.item$$$@-*5</strong></p>
+    <p>展开结果：</p>
+    <div class="cnblogs_code"><img id="code_img_closed_ac397fc5-f841-49e2-b95c-375f7f802890" class="code_img_closed" src="http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif" alt=""> <span class="cnblogs_code_collapse">View Code</span></div>
+    <p>例五：<strong>ul&gt;li.item$@-8*5</strong></p>
+    <p>展开结果：</p>
+    <div class="cnblogs_code"><img id="code_img_closed_bfbc0dfb-feb8-46fa-b52f-ce115f37af21" class="code_img_closed" src="http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif" alt=""> <span class="cnblogs_code_collapse">View Code</span></div>
+    <p><strong>自增总结：$自增，多个$可占位，@-自减，单写@1(number)规定自增起点，@-1(number)定义自减结束值。</strong></p>
+    <p><strong>各种隐藏(标签)写法：</strong></p>
+    <p>1) &nbsp;.class = &lt;<span class="tag">div<span class="pln"> <span class="atn">class<span class="pun">=<span class="atv">“class”<span class="tag">&gt;&lt;/div&gt;</span></span></span></span></span></span></p>
+    <p><span class="tag"><span class="pln"><span class="atn"><span class="pun"><span class="atv"><span class="tag">2) &nbsp;em&gt;.class = &lt;<span class="tag">em&gt;&lt;span<span class="pln"> <span class="atn">class<span class="pun">=<span class="atv">“class”<span class="tag">&gt;&lt;/span&gt;&lt;/em&gt;</span></span></span></span></span></span></span></span></span></span></span></span></p>
+    <p>3) &nbsp;ul&gt;.class = &lt;ul&gt;&lt;<span class="tag">li<span class="pln"> <span class="atn">class<span class="pun">=<span class="atv">“class”<span class="tag">&gt;&lt;/li&gt;&lt;/ul&gt;</span></span></span></span></span></span></p>
+    <p><span class="tag">4) &nbsp;table&gt;.row&gt;.col = &lt;table&gt;&lt;<span class="tag">tr<span class="pln"> <span class="atn">class<span class="pun">=<span class="atv">“row”<span class="tag">&gt;&lt;<span class="tag">td<span class="pln"> <span class="atn">class<span class="pun">=<span class="atv">“col”<span class="tag">&gt;&lt;/td&gt;</span></span></span></span></span></span>&lt;/tr&gt;&lt;/table&gt;</span></span></span></span></span></span></span></p>
+    <p><strong><span class="tag"><span class="pln"><span class="atn"><span class="pun"><span class="atv"><span class="tag">各种HTML简写：</span></span></span></span></span></span></strong></p>
+    <p><span class="tag"><span class="pln"><span class="atn"><span class="pun"><span class="atv"><span class="tag">1) &nbsp;！展开结果：</span></span></span></span></span></span></p>
+    <div class="cnblogs_code">
+        <div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div>
+        <p></p>
+        <div id="crayon-576cec49b5994870729141" class="crayon-syntax crayon-theme-classic crayon-font-courier-new crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 14px !important; line-height: 20px !important; height: auto;">
+            <div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 14px !important; height: 21px !important; line-height: 21px !important; margin-top: -21px; display: none; position: absolute; z-index: 2;"><span class="crayon-title"></span>
+                <div class="crayon-tools" style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div><span class="crayon-language">JavaScript</span></div></div>
+            <div class="crayon-info" style="min-height: 19.6px !important; line-height: 19.6px !important;"></div>
+            <div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 14px !important; line-height: 20px !important; z-index: 0; opacity: 0; overflow: hidden;">&amp;lt;!DOCTYPE html&amp;gt;
+                &amp;lt;html lang="en"&amp;gt;
+                &amp;lt;head&amp;gt;
+                &amp;lt;meta charset="UTF-8"&amp;gt;
+                &amp;lt;title&amp;gt;Document&amp;lt;/title&amp;gt;
+                &amp;lt;/head&amp;gt;
+                &amp;lt;body&amp;gt;
+
+                &amp;lt;/body&amp;gt;
+                &amp;lt;/html&amp;gt;</textarea></div>
+            <div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+                <table class="crayon-table">
+                    <tbody><tr class="crayon-row">
+                        <td class="crayon-nums " data-settings="show">
+                            <div class="crayon-nums-content" style="font-size: 14px !important; line-height: 20px !important;"><div class="crayon-num" data-line="crayon-576cec49b5994870729141-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-576cec49b5994870729141-2">2</div><div class="crayon-num" data-line="crayon-576cec49b5994870729141-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-576cec49b5994870729141-4">4</div><div class="crayon-num" data-line="crayon-576cec49b5994870729141-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-576cec49b5994870729141-6">6</div><div class="crayon-num" data-line="crayon-576cec49b5994870729141-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-576cec49b5994870729141-8">8</div><div class="crayon-num" data-line="crayon-576cec49b5994870729141-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-576cec49b5994870729141-10">10</div></div>
+                        </td>
+                        <td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-576cec49b5994870729141-1"><span class="crayon-o">&amp;</span><span class="crayon-v">lt</span><span class="crayon-sy">;</span><span class="crayon-o">!</span><span class="crayon-e">DOCTYPE </span><span class="crayon-v">html</span><span class="crayon-o">&amp;</span><span class="crayon-v">gt</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-576cec49b5994870729141-2"><span class="crayon-o">&amp;</span><span class="crayon-v">lt</span><span class="crayon-sy">;</span><span class="crayon-e">html </span><span class="crayon-e ">lang</span><span class="crayon-o">=</span><span class="crayon-s">"en"</span><span class="crayon-o">&amp;</span><span class="crayon-v">gt</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-576cec49b5994870729141-3"><span class="crayon-o">&amp;</span><span class="crayon-v">lt</span><span class="crayon-sy">;</span><span class="crayon-v">head</span><span class="crayon-o">&amp;</span><span class="crayon-v">gt</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-576cec49b5994870729141-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">&amp;</span><span class="crayon-v">lt</span><span class="crayon-sy">;</span><span class="crayon-e">meta </span><span class="crayon-e ">charset</span><span class="crayon-o">=</span><span class="crayon-s">"UTF-8"</span><span class="crayon-o">&amp;</span><span class="crayon-v">gt</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-576cec49b5994870729141-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">&amp;</span><span class="crayon-v">lt</span><span class="crayon-sy">;</span><span class="crayon-v">title</span><span class="crayon-o">&amp;</span><span class="crayon-v">gt</span><span class="crayon-sy">;</span><span class="crayon-r">Document</span><span class="crayon-o">&amp;</span><span class="crayon-v">lt</span><span class="crayon-sy">;</span><span class="crayon-o">/</span><span class="crayon-v">title</span><span class="crayon-o">&amp;</span><span class="crayon-v">gt</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-576cec49b5994870729141-6"><span class="crayon-o">&amp;</span><span class="crayon-v">lt</span><span class="crayon-sy">;</span><span class="crayon-o">/</span><span class="crayon-v">head</span><span class="crayon-o">&amp;</span><span class="crayon-v">gt</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-576cec49b5994870729141-7"><span class="crayon-o">&amp;</span><span class="crayon-v">lt</span><span class="crayon-sy">;</span><span class="crayon-v">body</span><span class="crayon-o">&amp;</span><span class="crayon-v">gt</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-576cec49b5994870729141-8"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span></div><div class="crayon-line" id="crayon-576cec49b5994870729141-9"><span class="crayon-o">&amp;</span><span class="crayon-v">lt</span><span class="crayon-sy">;</span><span class="crayon-o">/</span><span class="crayon-v">body</span><span class="crayon-o">&amp;</span><span class="crayon-v">gt</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-576cec49b5994870729141-10"><span class="crayon-o">&amp;</span><span class="crayon-v">lt</span><span class="crayon-sy">;</span><span class="crayon-o">/</span><span class="crayon-v">html</span><span class="crayon-o">&amp;</span><span class="crayon-v">gt</span><span class="crayon-sy">;</span></div></div></td>
+                    </tr>
+                    </tbody></table>
+            </div>
+        </div>
+
+        <p></p>
+        <div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div>
+    </div>
+    <p>2) &nbsp;a = &lt;<span class="tag">a<span class="pln"> <span class="atn">href<span class="pun">=<span class="atv">“”<span class="tag">&gt;&lt;/a&gt;</span></span></span></span></span></span></p>
+    <p>3) &nbsp;a:link = &lt;<span class="tag">a<span class="pln"> <span class="atn">href<span class="pun">=<span class="atv">“http://”<span class="tag">&gt;&lt;/a&gt;</span></span></span></span></span></span></p>
+    <p>4) &nbsp;a:mail = &lt;<span class="tag">a<span class="pln"> <span class="atn">href<span class="pun">=<span class="atv">“mailto:”<span class="tag">&gt;&lt;/a&gt;</span></span></span></span></span></span></p>
+    <p>5) &nbsp;inp = &lt;<span class="tag">input<span class="pln"> <span class="atn">type<span class="pun">=<span class="atv">“text”<span class="pln"> <span class="atn">name<span class="pun">=<span class="atv">“”<span class="pln"> <span class="atn">id<span class="pun">=<span class="atv">“”<span class="pln"> <span class="tag">/&gt;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+    <p>6) &nbsp;input:hidden = &lt;<span class="tag">input<span class="pln"> <span class="atn">type<span class="pun">=<span class="atv">“hidden”<span class="pln"> <span class="atn">name<span class="pun">=<span class="atv">“”<span class="pln"> <span class="tag">/&gt;</span></span></span></span></span></span></span></span></span></span></span></p>
+    <p><span class="tag"><span class="pln"><span class="atn"><span class="pun"><span class="atv"><span class="pln"><span class="atn"><span class="pun"><span class="atv"><span class="pln"><span class="tag">input标签所有属性都类似写法。</span></span></span></span></span></span></span></span></span></span></span></p>
+    <p>7) &nbsp;html:xml&nbsp;= &lt;<span class="tag">html<span class="pln"> <span class="atn">xmlns<span class="pun">=<span class="atv">“http://www.w3.org/1999/xhtml”<span class="tag">&gt;&lt;/html&gt;</span></span></span></span></span></span></p>
+    <p>8) &nbsp;bq = &lt;blockquote&gt;&lt;/blockquote&gt;</p>
+    <p>9) &nbsp;acr = &lt;<span class="tag">acronym<span class="pln"> <span class="atn">title<span class="pun">=<span class="atv">“”<span class="tag">&gt;&lt;/acronym&gt;</span></span></span></span></span></span></p>
+    <p>10) &nbsp;fig = &lt;figure&gt;&lt;/figure&gt;</p>
+    <p>11) &nbsp;bdo = &lt;<span class="tag">bdo<span class="pln"> <span class="atn">dir<span class="pun">=<span class="atv">“”<span class="tag">&gt;&lt;/bdo&gt;</span></span></span></span></span></span></p>
+    <p>12) &nbsp;bdo:r = &lt;<span class="tag">bdo<span class="pln"> <span class="atn">dir<span class="pun">=<span class="atv">“ltr”<span class="tag">&gt;&lt;/bdo&gt;</span></span></span></span></span></span></p>
+    <p>13) &nbsp;figc = &lt;figcaption&gt;&lt;/figcaption&gt;</p>
+    <p>14) &nbsp;link = &lt;<span class="tag">link<span class="pln"> <span class="atn">rel<span class="pun">=<span class="atv">“stylesheet”<span class="pln"> <span class="atn">href<span class="pun">=<span class="atv">“”<span class="pln"> <span class="tag">/&gt;</span></span></span></span></span></span></span></span></span></span></span></p>
+    <p><span class="tag"><span class="pln"><span class="atn"><span class="pun"><span class="atv"><span class="pln"><span class="atn"><span class="pun"><span class="atv"><span class="pln"><span class="tag">15) &nbsp;link:css = &lt;<span class="tag">link<span class="pln"> <span class="atn">rel<span class="pun">=<span class="atv">“stylesheet”<span class="pln"> <span class="atn">href<span class="pun">=<span class="atv">“style.css”<span class="pln"> <span class="tag">/&gt;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+    <p><span class="tag"><span class="pln"><span class="atn"><span class="pun"><span class="atv"><span class="pln"><span class="atn"><span class="pun"><span class="atv"><span class="pln"><span class="tag">15) &nbsp;link:print = &lt;<span class="tag">link<span class="pln"> <span class="atn">rel<span class="pun">=<span class="atv">“stylesheet”<span class="pln"> <span class="atn">href<span class="pun">=<span class="atv">“print.css”<span class="pln"> <span class="atn">media<span class="pun">=<span class="atv">“print”<span class="pln"> <span class="tag">/&gt;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+    <p><span class="tag"><span class="pln"><span class="atn"><span class="pun"><span class="atv"><span class="pln"><span class="atn"><span class="pun"><span class="atv"><span class="pln"><span class="tag">16) &nbsp;link:favicon = &lt;<span class="tag">link<span class="pln"> <span class="atn">rel<span class="pun">=<span class="atv">“shortcut icon”<span class="pln"> <span class="atn">type<span class="pun">=<span class="atv">“image/x-icon”<span class="pln"> <span class="atn">href<span class="pun">=<span class="atv">“favicon.ico”<span class="pln"> <span class="tag">/&gt;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+    <p><span class="tag"><span class="pln"><span class="atn"><span class="pun"><span class="atv"><span class="pln"><span class="atn"><span class="pun"><span class="atv"><span class="pln"><span class="tag">17) &nbsp;link:touch = &lt;<span class="tag">link<span class="pln"> <span class="atn">rel<span class="pun">=<span class="atv">“apple-touch-icon”<span class="pln"> <span class="atn">href<span class="pun">=<span class="atv">“favicon.png”<span class="pln"> <span class="tag">/&gt;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+    <p><span class="tag"><span class="pln"><span class="atn"><span class="pun"><span class="atv"><span class="pln"><span class="atn"><span class="pun"><span class="atv"><span class="pln"><span class="tag">18) &nbsp;link:rss = &lt;<span class="tag">link<span class="pln"> <span class="atn">rel<span class="pun">=<span class="atv">“alternate”<span class="pln"> <span class="atn">type<span class="pun">=<span class="atv">“application/rss+xml”<span class="pln"> <span class="atn">title<span class="pun">=<span class="atv">“RSS”<span class="pln"> <span class="atn">href<span class="pun">=<span class="atv">“rss.xml”<span class="pln"> <span class="tag">/&gt;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+    <p>19) &nbsp;link:atom = &lt;<span class="tag">link<span class="pln"> <span class="atn">rel<span class="pun">=<span class="atv">“alternate”<span class="pln"> <span class="atn">type<span class="pun">=<span class="atv">“application/atom+xml”<span class="pln"> <span class="atn">title<span class="pun">=<span class="atv">“Atom”<span class="pln"> <span class="atn">href<span class="pun">=<span class="atv">“atom.xml”<span class="pln"> <span class="tag">/&gt;<span class="pln">&nbsp;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+    <p><span class="tag">20) &nbsp;meta:utf = &lt;<span class="tag">meta<span class="pln"> <span class="atn">http-equiv<span class="pun">=<span class="atv">“Content-Type”<span class="pln"> <span class="atn">content<span class="pun">=<span class="atv">“text/html;charset=UTF-8”<span class="pln"> <span class="tag">/&gt;</span></span></span></span></span></span></span></span></span></span></span></span></p>
+    <p>21) &nbsp;meta:win = &lt;<span class="tag">meta<span class="pln"> <span class="atn">http-equiv<span class="pun">=<span class="atv">“Content-Type”<span class="pln"> <span class="atn">content<span class="pun">=<span class="atv">“text/html;charset=windows-1251”<span class="pln"> <span class="tag">/&gt;</span></span></span></span></span></span></span></span></span></span></span></p>
+    <p><span class="tag">22) &nbsp;meta:vp = &lt;<span class="tag">meta<span class="pln"> <span class="atn">name<span class="pun">=<span class="atv">“viewport”<span class="pln"> <span class="atn">content<span class="pun">=<span class="atv">“width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, mini<span class="atv">mum-scale=1.0″<span class="pln"> <span class="tag">/&gt;</span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+    <p>23) &nbsp;meta:compat = &lt;<span class="tag">meta<span class="pln"> <span class="atn">http-equiv<span class="pun">=<span class="atv">“X-UA-Compatible”<span class="pln"> <span class="atn">content<span class="pun">=<span class="atv">“IE=7”<span class="pln"> <span class="tag">/&gt;<span class="pln">&nbsp;</span></span></span></span></span></span></span></span></span></span></span></span></p>
+    <p><span class="tag">24) &nbsp;script:src = &lt;<span class="tag">script<span class="pln"> <span class="atn">src<span class="pun">=<span class="atv">“”<span class="tag">&gt;&lt;/script&gt;</span></span></span></span></span></span></span></p>
+    <p>25) &nbsp;form:get&nbsp;= &lt;<span class="tag">form<span class="pln"> <span class="atn">action<span class="pun">=<span class="atv">“”<span class="pln"> <span class="atn">method<span class="pun">=<span class="atv">“get”<span class="tag">&gt;&lt;/form&gt;</span></span></span></span></span></span></span></span></span></span></p>
+    <p><span class="tag">26) &nbsp;form:post = &lt;<span class="tag">form<span class="pln"> <span class="atn">action<span class="pun">=<span class="atv">“”<span class="pln"> <span class="atn">method<span class="pun">=<span class="atv">“post”<span class="tag">&gt;&lt;/form&gt;</span></span></span></span></span></span></span></span></span></span></span></p>
+    <p>27) &nbsp;emb = &lt;<span class="tag">embed<span class="pln"> <span class="atn">src<span class="pun">=<span class="atv">“”<span class="pln"> <span class="atn">type<span class="pun">=<span class="atv">“”<span class="pln"> <span class="tag">/&gt;</span></span></span></span></span></span></span></span></span></span></span></p>
+    <p><span class="tag">28) &nbsp;src = &lt;<span class="tag">source&gt;&lt;/source&gt;<span class="pln">&nbsp;</span></span></span></p>
+    <p>29) &nbsp;btn = &lt;<span class="tag">button&gt;&lt;/button&gt;<span class="pln">&nbsp;</span></span></p>
+    <p><span class="tag">30) &nbsp;btn:b = &lt;<span class="tag">button<span class="pln"> <span class="atn">type<span class="pun">=<span class="atv">“button”<span class="tag">&gt;&lt;/button&gt;<span class="pln">&nbsp;</span></span></span></span></span></span></span></span></p>
+    <p>31) &nbsp;btn:r = &lt;<span class="tag">button<span class="pln"> <span class="atn">type<span class="pun">=<span class="atv">“reset”<span class="tag">&gt;&lt;/button&gt;<span class="pln">&nbsp;</span></span></span></span></span></span></span></p>
+    <p><span class="tag">32) &nbsp;btn:s = &lt;<span class="tag">button<span class="pln"> <span class="atn">type<span class="pun">=<span class="atv">“submit”<span class="tag">&gt;&lt;/button&gt;</span></span></span></span></span></span></span></p>
+    <button type="button"></button>
+</div>
+</body>
+</html>

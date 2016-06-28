@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RequireJs</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!--<script src="js/require.js" data-main="js/config.js"></script>-->
+    <style>
+        body{
+            background-color: #333;
+        }
+        p {
+            display: block;
+            border: 1px solid #000;
+            padding: 48px;
+            left: 50%;
+            /*width: 200px;
+            margin-left: -100px;*/
+            position: absolute;
+            height: 48px;
+            line-height: 48px;
+            text-align: center;
+            color:#fff;
+            background-color: #f0f;
+            /*transform: translateX(-50%);*/
+            top: 50%;
+            transform: translate(-50%,-50%);
+        }
+    </style>
+</head>
+<body>
+<p id="someElement">
+    居中布局
+</p>
+<input value="test" id="input1" style="display: none">
+
+<h2 style="display: none">Great Web resources</h2>
+<ul id="resources" style="display: none">
+    <li><a href="http://opera.com/wsc">Opera Web Standards Curriculum</a></li>
+    <li><a href="http://sitepoint.com">Sitepoint</a></li>
+    <li><a href="http://alistapart.com">A List Apart</a></li>
+    <li><a href="http://yuiblog.com">YUI Blog</a></li>
+    <li><a href="http://caibaojian.com">WEB frontend blog</a></li>
+    <li><a href="http://www.devtoutiao.com">Develop news</a></li>
+</ul>
+
+<!-- 输出 "click" -->
+<input type="button" value="Click Me" onclick="alert(event.type)">
+
+<form method="post">
+    <input type="text" name="username" value="">
+    <input type="button" value="Echo Username" onclick="alert(username.value)">
+</form>
+<script>
+    function outputNumbers(count){
+        for (var i=0; i < count; i++){
+            alert(i);
+        }
+        alert(i); //计数
+    }
+    /*function assignHandler(){
+        var element = document.getElementById("someElement");
+        element.onclick = function(){
+            alert(element.id);
+        };
+    }*/
+
+    /*
+    function assignHandler(){
+        var element = document.getElementById("someElement");
+        var id = element.id;
+        element.onclick = function(){
+            alert(id);
+        };
+        element = null;
+    }
+    assignHandler();
+    */
+
+//    匿名函数可以用来模仿块级作用域并避免这个问题。
+//    用作块级作用域（通常称为私有作用域）的匿名函数的语法如下所示。
+    /*
+    (function(){
+    //这里是块级作用域
+    })();
+    */
+    /*
+    var someFunction = function(){
+//这里是块级作用域
+        alert("test");
+
+    };
+    someFunction();
+    */
+
+    function outputNumbers(count){
+        (function () {
+            for (var i=0; i < count; i++){
+                alert(i);
+            }
+        })();
+        alert(i); //导致一个错误！
+    }
+    outputNumbers(5);
+</script>
+</body>
+</html>

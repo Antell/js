@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Js — 寄生组合式继承</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!--<script src="js/require.js" data-main="js/config.js"></script>-->
+    <style>
+        body{
+            background-color: #333;
+        }
+        p {
+            display: block;
+            border: 1px solid #000;
+            padding: 48px;
+            left: 50%;
+            /*width: 200px;
+            margin-left: -100px;*/
+            position: absolute;
+            height: 48px;
+            line-height: 48px;
+            text-align: center;
+            color:#fff;
+            background-color: #f0f;
+            /*transform: translateX(-50%);*/
+            top: 50%;
+            transform: translate(-50%,-50%);
+        }
+    </style>
+</head>
+<body>
+<p id="pps">
+    寄生组合式继承
+</p>
+<input value="test" id="input1" style="display: none">
+
+<h2 style="display: none">Great Web resources</h2>
+<ul id="resources" style="display: none">
+    <li><a href="http://opera.com/wsc">Opera Web Standards Curriculum</a></li>
+    <li><a href="http://sitepoint.com">Sitepoint</a></li>
+    <li><a href="http://alistapart.com">A List Apart</a></li>
+    <li><a href="http://yuiblog.com">YUI Blog</a></li>
+    <li><a href="http://caibaojian.com">WEB frontend blog</a></li>
+    <li><a href="http://www.devtoutiao.com">Develop news</a></li>
+</ul>
+
+<script>
+    //实现原型链有一种基本模式，其代码大致如下。
+    /*
+    function SuperType(){
+        this.property = true;
+    }
+    SuperType.prototype.getSuperValue = function(){
+        return this.property;
+    };
+    function SubType(){
+        this.subproperty = false;
+    }
+    //继承了SuperType
+    SubType.prototype = new SuperType();
+    SubType.prototype.getSubValue = function (){
+        return this.subproperty;
+    };
+    var instance = new SubType();
+    alert(instance.getSuperValue()); //true
+//    以上代码定义了两个类型：SuperType 和SubType。每个类型分别有一个属性和一个方法。它们
+//    的主要区别是SubType 继承了SuperType，而继承是通过创建SuperType 的实例，并将该实例赋给
+//    SubType.prototype 实现的。实现的本质是重写原型对象，代之以一个新类型的实例。换句话说，原
+//    来存在于SuperType 的实例中的所有属性和方法，现在也存在于SubType.prototype 中了。在确立了
+//    继承关系之后，我们给SubType.prototype 添加了一个方法，这样就在继承了SuperType 的属性和方
+//    法的基础上又添加了一个新方法。这个例子中的实例以及构造函数和原型之间的关系如图6-4 所示。
+
+//    2. 确定原型和实例的关系
+//    可以通过两种方式来确定原型和实例之间的关系。第一种方式是使用instanceof 操作符，只要用
+//    这个操作符来测试实例与原型链中出现过的构造函数，结果就会返回true。以下几行代码就说明了这
+//    一点。
+    alert(instance instanceof Object); //true
+    alert(instance instanceof SuperType); //true
+    alert(instance instanceof SubType); //true
+
+    alert(Object.prototype.isPrototypeOf(instance)); //true
+    alert(SuperType.prototype.isPrototypeOf(instance)); //true
+    alert(SubType.prototype.isPrototypeOf(instance)); //true
+    */
+
+//    组合继承
+//    组合继承（combination inheritance），有时候也叫做伪经典继承，指的是将原型链和借用构造函数的
+//    技术组合到一块，从而发挥二者之长的一种继承模式。其背后的思路是使用原型链实现对原型属性和方
+//    法的继承，而通过借用构造函数来实现对实例属性的继承。这样，既通过在原型上定义方法实现了函数
+//    复用，又能够保证每个实例都有它自己的属性。下面来看一个例子。
+    /*
+    function SuperType(name){
+        this.name = name;
+        this.colors = ["red", "blue", "green"];
+    }
+    SuperType.prototype.sayName = function(){
+        alert(this.name);
+    };
+    function SubType(name, age){
+//继承属性
+        SuperType.call(this, name);
+        this.age = age;
+    }
+    //继承方法
+    SubType.prototype = new SuperType();
+    SubType.prototype.constructor = SubType;
+    SubType.prototype.sayAge = function(){
+        alert(this.age);
+    };
+    var instance1 = new SubType("Nicholas", 29);
+    instance1.colors.push("black");
+    alert(instance1.colors); //"red,blue,green,black"
+    instance1.sayName(); //"Nicholas";
+    instance1.sayAge(); //29
+    var instance2 = new SubType("Greg", 27);
+    alert(instance2.colors); //"red,blue,green"
+    instance2.sayName(); //"Greg";
+    instance2.sayAge(); //27
+    */
+
+//    原型式继承
+//    道格拉斯·克罗克福德在2006 年写了一篇文章，题为Prototypal Inheritance in JavaScript （JavaScript
+//    中的原型式继承）。在这篇文章中，他介绍了一种实现继承的方法，这种方法并没有使用严格意义上的
+//    构造函数。他的想法是借助原型可以基于已有的对象创建新对象，同时还不必因此创建自定义类型。为
+//    了达到这个目的，他给出了如下函数。
+    /*
+    function object(o){
+        function F(){}
+        F.prototype = o;
+        return new F();
+    }
+//    在object()函数内部，先创建了一个临时性的构造函数，然后将传入的对象作为这个构造函数的
+//    原型，最后返回了这个临时类型的一个新实例。从本质上讲，object()对传入其中的对象执行了一次
+//    浅复制。来看下面的例子。
+    var person = {
+        name: "Nicholas",
+        friends: ["Shelby", "Court", "Van"]
+    };
+    var anotherPerson = object(person);
+    anotherPerson.name = "Greg";
+    anotherPerson.friends.push("Rob");
+    var yetAnotherPerson = object(person);
+    yetAnotherPerson.name = "Linda";
+    yetAnotherPerson.friends.push("Barbie");
+    alert(person.friends); //"Shelby,Court,Van,Rob,Barbie"
+    */
+
+//    克罗克福德主张的这种原型式继承，要求你必须有一个对象可以作为另一个对象的基础。如果有这么
+//    一个对象的话，可以把它传递给object()函数，然后再根据具体需求对得到的对象加以修改即可。在这
+//    个例子中，可以作为另一个对象基础的是person 对象，于是我们把它传入到object()函数中，然后该
+//    函数就会返回一个新对象。这个新对象将person 作为原型，所以它的原型中就包含一个基本类型值属性
+//    和一个引用类型值属性。这意味着person.friends 不仅属于person 所有，而且也会被anotherPerson
+//    以及yetAnotherPerson 共享。实际上，这就相当于又创建了person 对象的两个副本。
+//    ECMAScript 5 通过新增Object.create()方法规范化了原型式继承。这个方法接收两个参数：一
+//    个用作新对象原型的对象和（可选的）一个为新对象定义额外属性的对象。在传入一个参数的情况下，
+//    Object.create()与object()方法的行为相同。
+    /*
+    var person = {
+        name: "Nicholas",
+        friends: ["Shelby", "Court", "Van"]
+    };
+    var anotherPerson = Object.create(person);
+    anotherPerson.name = "Greg";
+    anotherPerson.friends.push("Rob");
+    var yetAnotherPerson = Object.create(person);
+    yetAnotherPerson.name = "Linda";
+    yetAnotherPerson.friends.push("Barbie");
+    alert(person.friends); //"Shelby,Court,Van,Rob,Barbie"
+    */
+
+//    Object.create()方法的第二个参数与Object.defineProperties()方法的第二个参数格式相
+//    同：每个属性都是通过自己的描述符定义的。以这种方式指定的任何属性都会覆盖原型对象上的同名属
+//    性。例如：
+    /*
+    var person = {
+        name: "Nicholas",
+        friends: ["Shelby", "Court", "Van"]
+    };
+    var anotherPerson = Object.create(person, {
+        name: {
+            value: "Greg"
+        }
+    });
+    alert(anotherPerson.name); //"Greg"
+    */
+
+//    寄生式（parasitic）继承是与原型式继承紧密相关的一种思路，并且同样也是由克罗克福德推而广
+//    之的。寄生式继承的思路与寄生构造函数和工厂模式类似，即创建一个仅用于封装继承过程的函数，该
+//    函数在内部以某种方式来增强对象，最后再像真地是它做了所有工作一样返回对象。以下代码示范了寄
+//    生式继承模式。
+    /*
+    function object(o){
+        function F(){}
+        F.prototype = o;
+        return new F();
+    }
+    function createAnother(original){
+        var clone = object(original); //通过调用函数创建一个新对象
+        clone.sayHi = function(){ //以某种方式来增强这个对象
+            alert("hi");
+        };
+        return clone; //返回这个对象
+    }
+//    在这个例子中，createAnother()函数接收了一个参数，也就是将要作为新对象基础的对象。然
+//    后，把这个对象（original）传递给object()函数，将返回的结果赋值给clone。再为clone 对象
+//    添加一个新方法sayHi()，最后返回clone 对象。可以像下面这样来使用createAnother()函数：
+    var person = {
+        name: "Nicholas",
+        friends: ["Shelby", "Court", "Van"]
+    };
+    var anotherPerson = createAnother(person);
+    anotherPerson.sayHi(); //"hi"
+    */
+//    这个例子中的代码基于person 返回了一个新对象——anotherPerson。新对象不仅具有person
+//    的所有属性和方法，而且还有自己的sayHi()方法。
+//    在主要考虑对象而不是自定义类型和构造函数的情况下，寄生式继承也是一种有用的模式。前面示
+//    范继承模式时使用的object()函数不是必需的；任何能够返回新对象的函数都适用于此模式。
+
+
+//    寄生组合式继承
+//    前面说过，组合继承是JavaScript 最常用的继承模式；不过，它也有自己的不足。组合继承最大的
+//    问题就是无论什么情况下，都会调用两次超类型构造函数：一次是在创建子类型原型的时候，另一次是
+//    在子类型构造函数内部。没错，子类型最终会包含超类型对象的全部实例属性，但我们不得不在调用子
+//    类型构造函数时重写这些属性
+    function object(o) {
+        function F() {}
+        F.prototype = o;
+        return new F();
+    }
+
+    function inheritPrototype(subType, superType){
+        var prototype = object(superType.prototype); //创建对象
+        prototype.constructor = subType; //增强对象
+        subType.prototype = prototype; //指定对象
+    }
+//    这个示例中的inheritPrototype()函数实现了寄生组合式继承的最简单形式。这个函数接收两
+//    个参数：子类型构造函数和超类型构造函数。在函数内部，第一步是创建超类型原型的一个副本。第二
+//    步是为创建的副本添加constructor 属性，从而弥补因重写原型而失去的默认的constructor 属性。
+//    最后一步，将新创建的对象（即副本）赋值给子类型的原型。这样，我们就可以用调用inherit-
+//    Prototype()函数的语句，去替换前面例子中为子类型原型赋值的语句了，例如：
+    function SuperType(name){
+
+        this.name = name;
+        this.colors = ["red", "blue", "green"];
+    }
+    SuperType.prototype.sayName = function(){
+        alert(this.name);
+    };
+    function SubType(name, age){
+        SuperType.call(this, name);
+        this.age = age;
+    }
+    inheritPrototype(SubType, SuperType);
+    SubType.prototype.sayAge = function(){
+        alert(this.age);
+    };
+    var instance1 = new SubType("Nicholas", 29);
+    instance1.colors.push("black");
+    alert(instance1.colors);  //"red,blue,green,black"
+    instance1.sayName();      //"Nicholas"
+    instance1.sayAge();       //29
+
+    var instance2 = new SubType("Greg", 27);
+    alert(instance2.colors);  //"red,blue,green"
+    instance2.sayName();      //"Greg"
+    instance2.sayAge();       //27
+</script>
+</body>
+</html>
