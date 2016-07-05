@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+/*    var box={
+        name:"华仔",
+        age:39,
+        sex:"man"
+    };
+
+    for (var x in box){
+        console.log(box[x]);
+    };*/
+
+/*    function box(){
+        return arguments.length;
+    }
+    console.log(box("sf",1,5));*/
+
+    document.write("for in用法举例--数组<br>");
+    var obj=["zhao","liang","zl","an"];
+    for(var j in obj){
+        document.write("索引"+j+"、"+obj[j]+"<br>");
+    }
+
+    document.write("<br><br>for in用法举例--对象<br>");
+    var obj2={"name":"华仔","age":"24","sex":"男"};
+    for(var j in obj2){
+        document.write("属性名："+j+" 值："+obj2[j]+"<br>");
+    }
+</script>
+</body>
+</html>
