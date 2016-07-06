@@ -2,73 +2,119 @@
 <html lang="zh">
     <head>
 		<meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link href='http://fonts.useso.com/css?family=Josefin+Slab:400,700' rel='stylesheet' type='text/css'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+		<!--<link href='http://fonts.useso.com/css?family=Josefin+Slab:400,700' rel='stylesheet' type='text/css'>-->
 		<link rel="stylesheet" type="text/css" href="css/default.css" />
         <link rel="stylesheet" type="text/css" href="css/demo.css" />
         <link rel="stylesheet" type="text/css" href="css/style.css" />
-		<script type="text/javascript" src="js/modernizr.custom.79639.js"></script> 
+		<!--<script type="text/javascript" src="js/modernizr.custom.79639.js"></script> -->
 		<!--[if lte IE 8]>
 			 <link rel="stylesheet" type="text/css" href="css/simple.css" />
 		<![endif]-->
+        <!--<script type="text/javascript">-->
+            <!--document.body.addEventListener('touchmove', function (event) {-->
+                <!--event.preventDefault();-->
+            <!--}, false);-->
+        <!--</script>-->
+        <!--<style type="text/css">-->
+            <!--html,body{height:100%;overflow:hidden;}-->
+        <!--</style>-->
+        <script>
+            window.onload = function() {
+                var oDiv = document.getElementById("tab");
+
+                var oLi = oDiv.getElementsByTagName("input");//tab标签
+
+                var aCon = oDiv.getElementsByTagName("div")[0].getElementsByTagName("section");//tab内容
+                console.log(oDiv);
+                console.log(oLi);
+                console.log(aCon);
+                var timer = null;
+                for (var i = 0; i < oLi.length; i++) {
+                    oLi[i].index = i;
+                    oLi[i].onclick = function() {
+                        show(this.index);
+                        //console.log(this.index);
+                    }
+                }
+                function show(a) {
+                    index = a;
+                    var alpha = 0;
+                    for (var j = 0; j < oLi.length; j++) {
+                        console.log(oLi.length);
+//                        oLi[j].className = "";
+//                        aCon[j].className = "";
+//                        aCon[j].style.opacity = 0;
+//                        aCon[j].style.filter = "alpha(opacity=0)";
+                        aCon[j].style.display = "none";
+                        //aCon[j].style.filter = "alpha(opacity=0)";
+                    }
+//                    oLi[index].className = "cur";
+                    aCon[index].style.display = "block";
+
+/*                    clearInterval(timer);
+                    timer = setInterval(function() {
+                                alpha += 2;
+                                alpha > 100 && (alpha = 100);
+                                aCon[index].style.opacity = alpha / 100;
+                                aCon[index].style.filter = "alpha(opacity=" + alpha + ")";
+                                alpha == 100 && clearInterval(timer);
+                            },
+                            6)*/
+                }
+            }
+        </script>
     </head>
     <body>
         <div class="container">
-			<div class="st-container">
+			<div class="st-container" id="tab">
 			
 				<input type="radio" name="radio-set" checked="checked" id="st-control-1"/>
-				<a href="#st-panel-1">Serendipity</a>
+				<a href="#st-panel-1">简介</a>
 				<input type="radio" name="radio-set" id="st-control-2"/>
-				<a href="#st-panel-2">Happiness</a>
+				<a href="#st-panel-2">经历</a>
 				<input type="radio" name="radio-set" id="st-control-3"/>
-				<a href="#st-panel-3">Tranquillity</a>
+				<a href="#st-panel-3">技能</a>
 				<input type="radio" name="radio-set" id="st-control-4"/>
-				<a href="#st-panel-4">Positivity</a>
-				<input type="radio" name="radio-set" id="st-control-5"/>
-				<a href="#st-panel-5">Passion</a>
+				<a href="#st-panel-4">期望</a>
+				<!--<input type="radio" name="radio-set" id="st-control-5"/>-->
+				<!--<a href="#st-panel-5">Passion</a>-->
 				
 				<div class="st-scroll">
 				
 					<!-- Placeholder text from http://hipsteripsum.me/ -->
 					
 					<section class="st-panel" id="st-panel-1">
-						<div class="st-deco" data-icon="H"></div>
-						<h2>Serendipity</h2>
+						<div class="st-deco" data-icon="A"></div>
+						<h2>简介</h2>
 						<p>Banksy adipisicing eiusmod banh mi sed. Squid stumptown est odd future nisi, commodo mlkshk pop-up adipisicing retro.</p>
-						<p>
-							<a class="htmleaf-icon icon-home" href="http://www.htmleaf.com/" title="jQuery之家" target="_blank"><span> jQuery之家</span></a> | 
-							<a class="htmleaf-icon icon-arrow-right3" href="http://www.htmleaf.com/html5/html5muban/20141126596.html" title="返回下载页" target="_blank"><span> 返回下载页</span></a>
-						</p>
-						<!--<div class="htmleaf-links">
-							<a class="htmleaf-icon icon-home" href="http://www.htmleaf.com/" title="jQuery之家" target="_blank"><span> jQuery之家</span></a>
-							<a class="htmleaf-icon icon-arrow-right3" href="" title="返回下载页" target="_blank"><span> 返回下载页</span></a>
-						</div>-->
+
 					</section>
 					
-					<section class="st-panel st-color" id="st-panel-2">
-						<div class="st-deco" data-icon="2"></div>
-						<h2>Happiness</h2>
+					<section class="st-panel st-color" id="st-panel-2" style="display: none">
+						<div class="st-deco" data-icon="A"></div>
+						<h2>经历</h2>
 						<p>Art party readymade beard labore cosby sweater culpa. Art party whatever incididunt, scenester umami polaroid tofu.</p>
 					</section>
 					
-					<section class="st-panel" id="st-panel-3">
-						<div class="st-deco" data-icon="B"></div>
-						<h2>Tranquillity</h2>
+					<section class="st-panel" id="st-panel-3" style="display: none">
+						<div class="st-deco" data-icon="A"></div>
+						<h2>特长</h2>
 						<p>Sint aute occaecat id vice. Post-ironic fap pork belly next level godard, id fanny pack williamsburg forage truffaut.</p>
 					</section>
 					
-					<section class="st-panel st-color" id="st-panel-4">
-						<div class="st-deco" data-icon="x"></div>
-						<h2>Positivity</h2>
+					<section class="st-panel st-color" id="st-panel-4" style="display: none">
+						<div class="st-deco" data-icon="A"></div>
+						<h2>期望</h2>
 						<p>Mixtape fap leggings art party, butcher authentic farm-to-table you probably haven't heard of them do labore cosby sweater.</p>
 					</section>
 					
-					<section class="st-panel" id="st-panel-5">
-						<div class="st-deco" data-icon="Ç"></div>
-						<h2>Passion</h2>
-						<p>Fixie ad odd future polaroid dreamcatcher, nesciunt carles bicycle rights accusamus mcsweeney's mumblecore nulla irony.</p>
-					</section>
+					<!--<section class="st-panel" id="st-panel-5">-->
+						<!--<div class="st-deco" data-icon="Ç"></div>-->
+						<!--<h2>Passion</h2>-->
+						<!--<p>Fixie ad odd future polaroid dreamcatcher, nesciunt carles bicycle rights accusamus mcsweeney's mumblecore nulla irony.</p>-->
+					<!--</section>-->
 
 				</div><!-- // st-scroll -->
 				
