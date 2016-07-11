@@ -222,16 +222,17 @@
     color: #0595ff;
     text-shadow: 1px 1px 1px rgba(151,24,64,0.2);
 	position: absolute;
-	font-size: 54px;
-    /*font-size: 2.0rem;*/
+	/*font-size: 54px;*/
+    font-size: 0.24rem;
 	font-weight: 900;
 	width: 80%;
 	left: 10%;
 	text-align: center;
-	line-height: 50px;
+	/*line-height: 50px;*/
+    line-height: 0.22rem;
 	margin: -70px 0 0 0;
 	padding: 0;
-	top: 50%;
+	top: 38%;
 	-webkit-backface-visibility: hidden;
 }
 
@@ -303,17 +304,21 @@
 
 .st-panel p {
 	position: absolute;
-	text-align: center;
-	font-size: 16px;
-	line-height: 22px;
+	/*text-align: center;*/
+    text-align: left;
+/*	font-size: 16px;
+	line-height: 22px;*/
+    font-size: 0.16rem;
+    line-height: 0.22rem;
 	color: #8b8b8b;
 	z-index: 2;
 	padding: 0;
 	width: 50%;
 	left: 25%;
-	top: 50%;
+	top: 38%;
 	margin: 10px 0 0 0;
 	-webkit-backface-visibility: hidden;
+    margin-bottom: 0.96rem;
 }
 #st-control-1:checked ~ .st-scroll #st-panel-1 p,
 #st-control-2:checked ~ .st-scroll #st-panel-2 p,
@@ -407,7 +412,8 @@
 
 @media screen and (max-width: 520px) {
 	.st-panel h2 {
-		font-size: 42px;
+		/*font-size: 42px;*/
+        font-size: 0.24rem;
 	}
 	
 	.st-panel p {
@@ -417,12 +423,14 @@
 	}
 	
 	.st-container > a {
-		font-size: 13px;
+		/*font-size: 13px;*/
+        font-size: 0.13rem;
 	}
 }
 @media screen and (max-width: 360px) {
 	.st-container > a {
-		font-size: 10px;
+		/*font-size: 10px;*/
+        font-size: 0.12rem;
 	}
 	
 	.st-deco{

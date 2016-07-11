@@ -23,13 +23,11 @@
         <script>
             window.onload = function() {
                 var oDiv = document.getElementById("tab");
-
                 var oLi = oDiv.getElementsByTagName("input");//tab标签
-
                 var aCon = oDiv.getElementsByTagName("div")[0].getElementsByTagName("section");//tab内容
-                console.log(oDiv);
+/*                console.log(oDiv);
                 console.log(oLi);
-                console.log(aCon);
+                console.log(aCon);*/
                 var timer = null;
                 for (var i = 0; i < oLi.length; i++) {
                     oLi[i].index = i;
@@ -88,8 +86,9 @@
 					<section class="st-panel" id="st-panel-1">
 						<div class="st-deco" data-icon="A"></div>
 						<h2>简介</h2>
-						<p>Banksy adipisicing eiusmod banh mi sed. Squid stumptown est odd future nisi, commodo mlkshk pop-up adipisicing retro.</p>
-
+                        <p>
+                            姓名：张华<br>性别：男<br>年龄：39
+                        </p>
 					</section>
 					
 					<section class="st-panel st-color" id="st-panel-2" style="display: none">
@@ -100,8 +99,14 @@
 					
 					<section class="st-panel" id="st-panel-3" style="display: none">
 						<div class="st-deco" data-icon="A"></div>
-						<h2>特长</h2>
-						<p>Sint aute occaecat id vice. Post-ironic fap pork belly next level godard, id fanny pack williamsburg forage truffaut.</p>
+						<h2>描述</h2>
+                        <p>
+                            1、了解html5、css3最新规范，熟练js、jpuery、ajax,具备前端开发经验5年；<br>
+                            2、具备响应式设计及交互设计能力；精通IE、firefox、opera、safari、google等浏览器特性；<br>
+                            3、可使用bootstrap或者其他WEB前端框架；<br>
+                            4、熟悉PHP语言，对THINKPHP框架有一定了解；<br>
+                            5、可使用原型设计工具，根据需求设计WEB产品原型。<br>
+                        </p>
 					</section>
 					
 					<section class="st-panel st-color" id="st-panel-4" style="display: none">
