@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RequireJs</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+        body{
+            background-color: #333;
+        }
+        p {
+            display: block;
+            border: 1px solid #000;
+            padding: 48px;
+            left: 50%;
+            /*width: 200px;
+            margin-left: -100px;*/
+            position: absolute;
+            height: 48px;
+            line-height: 48px;
+            text-align: center;
+            color:#fff;
+            background-color: #f0f;
+            /*transform: translateX(-50%);*/
+            top: 50%;
+            transform: translate(-50%,-50%);
+        }
+    </style>
+</head>
+<body>
+<iframe src="css-rem.html" style="display: block;overflow: hidden;height: 480px;width: 320px" id="myframe"></iframe>
+<p id="pps">
+   Html5 iframe
+</p>
+
+<script>
+
+
+/*    在js中，延迟执行函数有两种：
+    settimeout和setinterval，用法如下：
+    settimeout("test()","2000");  //2000毫秒后执行test()函数，只执行一次。
+    setinterval("test()","2000"); //每隔2000毫秒执行一次test()函数，执行无数次。
+    var interval = window.setinterval("test()","2000");
+    window.clearinterval(interval);     //停止执行setinterval循环。
+
+    当我们想让test()函数每隔2000毫秒执行一次，执行10000毫秒后停止执行时，可以用两者三者结合使用来实现。
+    var interval2 = window.setinterval("openit2()",2000);
+    settimeout(function() {window.clearinterval(interval2);},10000);
+
+    带参方法执行延迟
+    settimeout(function(){return executequerytask(data);},"10000");
+    例子：*/
+
+/*    function changeSrc()
+    {
+        document.getElementById("myframe").src="http://google.com";
+    };
+    changeSrc();*/
+
+    var aa = function (){
+        document.getElementsByTagName("iframe")[0].src = 'http://www.baidu.com';
+    };
+    //var bb = "testbb";
+    window.onload = function(){
+        //document.getElementById("myframe").src = 'http://www.sohu.com';
+        //var bb = "test";
+        //alert(bb);
+        setTimeout('aa()','3000');
+        //fr.src = 'http://www.sohu.com';
+        //console.log(fr.src);
+    };
+
+
+
+/*    function box(name,age){
+        return "名字："+name+" 年龄："+age;
+    }
+    alert(box("华仔",39));*/
+/*    var zml = {
+        name:"huazai",
+        age :18
+    }
+    alert(zml.name);*/
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+
+<canvas id="myCanvas" width="400" height="400" style="border:1px solid #c3c3c3;">
+    Your browser does not support the canvas element.
+</canvas>
+<br>
+<canvas width="400" height="400" id="canvas">
+    <span>亲，您的浏览器不支持canvas，换个浏览器试试吧！</span>
+</canvas>
+<a href="http://www.cnblogs.com/liugang-vip/">http://www.cnblogs.com/liugang-vip/</a>
+<script type="text/javascript">
+
+/*    var c = document.getElementById("myCanvas");
+    var cxt=c.getContext("2d");
+    cxt.fillStyle="#000";
+    cxt.beginPath();
+    cxt.arc(70,64,60,0,Math.PI*2,true);
+    cxt.closePath();
+    cxt.fill();*/
+
+/*  圆弧context.arc(x, y, radius, starAngle,endAngle, anticlockwise)
+
+    x:圆心的x坐标
+
+    y:圆心的y坐标
+
+    straAngle:开始角度
+
+    endAngle:结束角度
+
+    anticlockwise:是否逆时针（true）为逆时针，(false)为顺时针*/
+
+    //画一个圆弧
+/*   var c = document.getElementById("myCanvas");
+   var cxt=c.getContext("2d");
+   cxt.fillStyle="#000";
+    //将原点移到100,100的位置
+   cxt.translate(100, 100);
+   cxt.arc(0,0,100,30*Math.PI/180, 180*Math.PI/180);
+   cxt.stroke();*/
+
+var c = document.getElementById("myCanvas");
+var ctx=c.getContext("2d");
+ctx.fillStyle="#000";
+ctx.save();
+ctx.translate(100, 100);
+ctx.arc(0,0,100,0, 30*Math.PI/180);
+ctx.restore();
+//第一条线
+ctx.save();
+ctx.moveTo(100,100);
+ctx.lineTo(200,100);
+ctx.restore();
+//第二条线
+ctx.save();
+ctx.translate(100, 100);
+ctx.moveTo(0,0);
+ctx.rotate(30*Math.PI/180);
+ctx.lineTo(100,0);
+ctx.stroke();
+ctx.restore();
+</script>
+
+</body>
+</html>
