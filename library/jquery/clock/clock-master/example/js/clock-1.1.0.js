@@ -21,17 +21,20 @@
         // init clock
         // element and options
         _.init = function(el, o){
-
+            //el选择器 o参数
             o && $.extend(_.o,o);
 
             _.el = el;
 
+            //设置默认配色模板为t1
             (_.o.theme in _.ts)?_.t = _.ts[_.o.theme]: _.t = _.ts['t1'];
 
             _.o.height< _.o.width*43/30?_.w=_.o.height*30/43:_.w=_.o.width;
+            //画布高度
             _.h = _.w*43/30;
-
+            //半个画布高度
             _.r = _.w/2;
+
 
             _.c = {
                 f: {
@@ -80,20 +83,21 @@
                 eAngle: Math.PI*2,
                 counterclockwise: true
             };
-
+            /*
             paintArc(oa);
 
             oa.type = 'fill';
             oa.style = _.t[3];
             paintArc(oa);
 
+          //最外表盘
             oa.r = .9*_.r;
             oa.style = _.t[0];
             paintArc(oa);
 
             oa.r = .5*_.r;
             oa.style = _.t[3];
-            paintArc(oa);
+            paintArc(oa);*/
 
             var ol = {
                 context: context,
@@ -103,6 +107,8 @@
             };
 
             var angle = 0,tr = .99* _.r, er = .92* _.r;
+            /*
+            //分针线
             for(var i=0;i<60;++i){
                 ol.points = [{
                     x: _.r+tr*Math.cos(angle),
@@ -113,8 +119,10 @@
                 }];
                 paintLine(ol);
                 angle += Math.PI/30;
-            }
-            //表盘小时星标线宽度
+            }*/
+
+
+/*            //表盘小时星标线宽度
             context.lineWidth = 2;
             context.textBaseline = 'middle';
             context.textAlign = 'center';
@@ -139,7 +147,10 @@
                 context.fillStyle = _.t[1];
                 context.fillText(num,_.r+.81*_.r*Math.cos(angle),_.r+.81*_.r*Math.sin(angle));
                 angle += Math.PI/6;
-            }
+            }*/
+
+
+            /*
             //内盘半径
             oa.r = .7*_.r;
             oa.style = _.t[1];
@@ -147,7 +158,7 @@
             //表针轴
             oa.r = .04*_.r;
             oa.style = _.t[4];
-            paintArc(oa);
+            paintArc(oa);*/
         };
         //时针长度
         _.hc = .55;
@@ -158,25 +169,32 @@
 
         // paint clock pointers and date info
         _.paintPs = function(context){
+            //clearRect() 方法清空给定矩形内的指定像素
             context.clearRect(0,0,_.o.width,_.o.height);
 
             var curT = new Date();
+            //console.log(curT);
             curT.setTime(curT.getTime()-_.d);
             var h = curT.getHours(),
                 m = curT.getMinutes(),
                 s = curT.getSeconds(),sa = s*Math.PI/30,
                 ms = m + s/60,ma = ms*Math.PI/30,
                 hs = h%12 + ms/60,ha = hs*Math.PI/6;
-
+            //console.log(s);
             context.textBaseline = 'middle';
             context.textAlign = 'center';
             context.font = .1*_.r+"px YaHei";
             context.fillStyle = _.t[2];
             context.fillText(h>=12?'PM':'AM',1.35*_.r,_.r);
 
+
+            //画秒针
             paintP(context,sa,_.sc);
+            //画分针
             paintP(context,ma,_.mc);
+            //画时针
             paintP(context,ha,_.hc);
+
 
             var oa = {
                 context: context,
@@ -189,6 +207,7 @@
                 eAngle: Math.PI*2,
                 counterclockwise: true
             };
+            //画针轴
             paintArc(oa);
 
             _.iw = _.w/3;
@@ -205,7 +224,9 @@
             oa.type = 'stroke';
             oa.eAngle = -.5*Math.PI;
 
-            context.fillText(db(h),tx,ty);
+            //画下半部分环表
+
+/*            context.fillText(db(h),tx,ty);
             oa.x = tx;
             oa.style = _.t[2];
             oa.sAngle = ha-.5*Math.PI;
@@ -223,7 +244,7 @@
             oa.x = tx;
             oa.style = _.t[0];
             oa.sAngle = sa-.5*Math.PI;
-            paintArc(oa);
+            paintArc(oa);*/
         };
 
         // start clock
@@ -232,6 +253,7 @@
             _.paintPs(_.c.p.context);
             _.tm = setInterval(function(){
                 _.paintPs(_.c.p.context);
+//                console.log(_.c.p.context);
             },1000);
         };
 
@@ -251,7 +273,7 @@
             return x<10?"0"+x:x;
         };
 
-        // paint pointer
+        // paint pointer 画指针
         var paintP = function(context,angle,c){
             var o = {
                 context: context,
@@ -287,6 +309,8 @@
             eAngle,             // end angel
             counterclockwise    // T/F
         }*/
+
+        //画圆形
         var paintArc = function(o){
             o.context.beginPath();
             o.context.arc(o.x, o.y, o.r, o.sAngle, o.eAngle, o.counterclockwise);
@@ -308,6 +332,7 @@
             style,              // stroke/fill style
             points,             // points coordinates points=[[x1,y1],[x2,y2]...[xn,yn]]
         }*/
+        //画盘星
         var paintLine = function(o){
             var len = o.points.length;
             if(len<2) return ;
@@ -327,19 +352,20 @@
             }
             o.context.closePath();
         }
-    };
+};
 
-    $.fn.clock = function(o){
-        var len = this.length;
+$.fn.clock = function(o){
 
-        // more than one selector
-        // chain job
-        return this.each(function(index){
-            var _ = $(this),
-                key = 'clock'+(len>1?'-'+ ++index:''),
-                instance = (new Clock().init(_,o));
-            _.data(key,instance).data('key',key);
-        });
-    };
+    var len = this.length;
+
+    // more than one selector
+    // chain job
+    return this.each(function(index){
+        var _ = $(this),
+            key = 'clock'+(len>1?'-'+ ++index:''),
+            instance = (new Clock().init(_,o));
+        _.data(key,instance).data('key',key);
+    });
+};
 
 })(jQuery);

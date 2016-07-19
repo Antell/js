@@ -10,7 +10,6 @@
         <div class="clock" id="clock"></div>
         <div class="clock" id="clock1"></div>
         <div class="clock" id="clock2"></div>
-        <div class="clock" id="clock3"></div>
     </div>
 
 </body>
@@ -26,9 +25,15 @@
     // data.setTime(new Date());
 
     var d = new Date();
-    d.setHours(9);
-    d.setMinutes(51);
-    d.setSeconds(20);
+/*    var d = new Date()
+    d.setHours(15)
+    document.write(d)*/
+
+    /*    d.setHours(9);
+        d.setMinutes(51);
+        d.setSeconds(20);*/
+    d.setHours(15,35,1)
+    //console.log(d);
 
     var clock1 = $("#clock1").clock({
         width: 210,
@@ -43,7 +48,6 @@
         theme: 't3'
     });
 
-    var clock3 = $("#clock3").clock();
 
 </script>
 </html>
