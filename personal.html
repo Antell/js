@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <title>个人简历</title>
+    <style type="text/css">
+        html {
+            font-size: 625%;
+            /*10 ÷ 16 × 100% = 62.5%*/
+            /*谷歌浏览器最小支持12px所以用62.5设置元素尺寸会出错 这里改为625%*/
+        }
+        body {
+            font-size: 0.16rem;
+            font-family: "simsun","Microsoft YaHei";
+            /*1.4 × 10px = 14px */
+            overflow: hidden;
+            background-color: #fff;
+        }
+        h1 {
+            font-size: 0.20rem;
+            /*2.4 × 10px = 24px*/
+        }
+        #abc {
+            width: 3.20rem;
+            height:0.64rem;
+            display:block;
+            background-color: gray;
+        }
+        #pps {
+            display: block;
+            border: 1px solid #000;
+            padding: 0.48rem;
+            left: 50%;
+            /*width: 200px;
+            margin-left: -100px;*/
+            position: absolute;
+            height: 0.48rem;
+            line-height: 0.48rem;
+            text-align: center;
+            color:#fff;
+            background-color: #f0f;
+            /*transform: translateX(-50%);*/
+            top: 50%;
+            transform: translate(-50%,-50%);
+        }
+    </style>
+</head>
+<body>
+<p id="pps">
+    <!--居中布局-->
+    个人简历
+</p>
+<!--<h1>响应式布局rem应用</h1>-->
+<!--<p>rem:W3C官网描述是“font size of the root element”，即rem是相对于根元素</p>-->
+<!--<p>我们只需要在根元素确定一个参考值，在根元素中设置多大的字体，这完全可以根据您自己的需，大家也可以参考下图：</p>-->
+<!--<p>默认 16px = 12pt = 1rem = 100%</p>-->
+<!--<p>62.5%为10px = 1rem</p>-->
+<!--<p>完善修改：谷歌浏览器最小支持12px所以用62.5%设置元素尺寸会出错 这里改为625%</p>-->
+<!--<div id="abc">3.20rem*0.64rem = 320px*64px </div>-->
+<script>
+    for (var box = 1; box <= 5 ;box ++){
+        console.log(box);
+    };
+</script>
+</body>
+</html>
